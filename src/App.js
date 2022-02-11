@@ -7,16 +7,14 @@ import Cooking from './components/cooking';
 import Coding from './components/coding';
 import Football from './components/football';
 import Article from './components/article';
-import { useState } from 'react';
-
+import NotFound from './components/not-found';
 function App() {
-	const [user, setUser] = useState('jessjelly');
 	return (
 		<BrowserRouter>
 			<div className="App">
 				<Header className="body" />
-
 				<Routes>
+					<Route path="*" element={<NotFound />} />
 					<Route path="/" element={<Home />} />
 					<Route path="/topics" element={<Topics />} />
 					<Route path="/topics/topics/cooking" element={<Cooking />} />
@@ -24,7 +22,6 @@ function App() {
 					<Route path="/topics/topics/football" element={<Football />} />
 					<Route path="/articles/:article_id" element={<Article />} />
 					<Route path="/articles/:article_id/comments" element={<Article />} />
-					{/* <Route path="/comments/:commend_id" element={<Article />} /> */}
 				</Routes>
 			</div>
 		</BrowserRouter>

@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
 	const [articles, setArticles] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		getArticles().then((articles) => {
 			setArticles(articles);
+
+			setLoading(false);
 		});
 	}, []);
-
+	if (loading) return <p>Loading...</p>;
 	return (
 		<main className="articles">
 			<ul className="articles">

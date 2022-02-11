@@ -4,28 +4,29 @@ import { Link, useParams } from 'react-router-dom';
 
 const Coding = () => {
 	const [articles, setArticles] = useState([]);
-	const { order, topic } = useParams();
-	const [sortBy, setSortby] = useState('');
+	const [loading, setLoading] = useState(true);
+
+	const [sortBy, setSortby] = useState('created_at');
 	const [category, setCategory] = useState('');
-	const changeSort = (event) => {
-		setSortby(event.target.value);
-	};
+
+	// const changeSort = (event) => {
+	// 	setSortby(event.target.value);
+	// };
 
 	useEffect(() => {
-		getArticles(order, topic).then((articles) => {
+		getArticles(sortBy).then((articles) => {
 			setArticles(articles);
-		});
-	}, [order, topic]);
 
+			setLoading(false);
+		});
+	}, [sortBy]);
+	if (loading) return <p>Loading...</p>;
 	return (
 		<main className="articles">
 			<h2>
-				<select value={changeSort} onChange={changeSort}>
-					<option value="" disabled>
-						Filter By
-					</option>
-					<option value="none">No filter</option>
-				</select>
+				<button onClick={() => setSortby('created_at')}>Published</button>
+				<button onClick={() => setSortby('votes')}>Votes</button>
+				<button onClick={() => setSortby('comment_count')}>Comments</button>
 			</h2>
 			<ul className="codingArticle">
 				{articles.map((article) => {
@@ -39,8 +40,8 @@ const Coding = () => {
 								<p className="articleBody">{article.body}</p>
 								<Link to={`/articles/${article.article_id}`}> Read more </Link>
 								<p className="commentCount">
-									{' '}
-									Comments: {article.comment_count}
+									{article.created_at} | Votes: {article.votes} | Comments:{' '}
+									{article.comment_count}
 								</p>
 							</ul>
 						);

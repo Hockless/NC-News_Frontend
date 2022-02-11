@@ -4,21 +4,26 @@ import { Link } from 'react-router-dom';
 
 const Cooking = () => {
 	const [articles, setArticles] = useState([]);
-	const [sortBy, setSortby] = useState('');
-
+	const [sortBy, setSortby] = useState('created_at');
+	const [loading, setLoading] = useState(true);
 	const changeSort = (event) => {
 		setSortby(event.target.value);
 	};
 
 	useEffect(() => {
-		getArticles().then((articles) => {
+		getArticles(sortBy).then((articles) => {
 			setArticles(articles);
+			setLoading(false);
 		});
-	}, []);
-
+	}, [sortBy]);
+	if (loading) return <p>Loading...</p>;
 	return (
 		<main className="articles">
-			<select value={changeSort}></select>
+			<h2>
+				<button onClick={() => setSortby('created_at')}>Published</button>
+				<button onClick={() => setSortby('votes')}>Votes</button>
+				<button onClick={() => setSortby('comment_count')}>Comments</button>
+			</h2>
 			<ul className="codingArticle">
 				{articles.map((article) => {
 					if (article.topic === 'cooking')
@@ -32,8 +37,8 @@ const Cooking = () => {
 								<p className="articleBody">{article.body}</p>
 								<Link to={`/articles/${article.article_id}`}> Read more </Link>
 								<p className="commentCount">
-									{' '}
-									Comments: {article.comment_count}
+									{article.created_at} | Votes: {article.votes} | Comments:{' '}
+									{article.comment_count}
 								</p>
 							</ul>
 						);

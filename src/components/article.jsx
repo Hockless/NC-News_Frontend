@@ -12,11 +12,11 @@ const Article = () => {
 	const [comments, setComments] = useState([]);
 	const { article_id, reqBody } = useParams();
 	const [commentBody, setCommentBody] = useState('');
-	const [status, setStatus] = useState(null);
 
 	useEffect(() => {
 		getArticleID(article_id).then((apiArticle) => {
 			setArticle(apiArticle.article);
+
 			setLoading(false);
 		});
 	}, [article_id]);
@@ -39,12 +39,13 @@ const Article = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		event.target.reset();
 		const request = {
 			body: commentBody,
 			username: 'jessjelly',
 		};
 		postComment(article_id, request).then((commentFromAPI) => {
-			console.log(commentFromAPI);
+			if (request.body === '') return '';
 			setComments((previous) => [commentFromAPI, ...previous]);
 			setCommentBody('');
 		});
