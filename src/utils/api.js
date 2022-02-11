@@ -42,6 +42,12 @@ export const patchComment = (comment_id) => {
 	return newsApi.patch(`/comments/${comment_id}`, { inc_votes: 1 });
 };
 
+export const patchArtComment = (article_id) => {
+	return newsApi.patch(`/articles/${article_id}`, {
+		inc_votes: 1,
+	});
+};
+
 export const postComment = (article_id, reqBody) => {
 	return newsApi
 		.post(`/articles/${article_id}/comments`, reqBody)

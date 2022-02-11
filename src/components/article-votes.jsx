@@ -1,23 +1,23 @@
 import { useState } from 'react';
-import { patchComment } from '../utils/api';
+import { patchArtComment } from '../utils/api';
 
-const UpVote = ({ comment }) => {
+const ArtVote = ({ article }) => {
 	const [voteChange, setVoteChange] = useState(0);
 	const giveVote = (value) => {
 		setVoteChange((currChange) => currChange + value);
-		patchComment(comment.comment_id);
+		patchArtComment(article.article_id);
 	};
 	return (
 		<div>
-			<p>Comment Votes: {comment.votes + voteChange}</p>
+			<p>Article Votes: {article.votes + voteChange}</p>
 			<button className="cybr-btn" onClick={() => giveVote(1)}>
 				UPVOTE_
 			</button>
 			<button className="cybr-btn" onClick={() => giveVote(-1)}>
-				downvote_
+				DOWNVOTE_
 			</button>
 		</div>
 	);
 };
 
-export default UpVote;
+export default ArtVote;

@@ -16,6 +16,23 @@
 	text-align: left;
 }
 
+.sortBy {
+	font-family: 'Cyber', sans-serif;
+	background-image: linear-gradient(to right, #f5ed00, white);
+	font-size: x-small;
+	border-radius: 3px;
+}
+
+.buttonBox {
+	padding-right: 15px;
+}
+
+.divider {
+	width: 5px;
+	height: auto;
+	display: inline-block;
+}
+
 .articleBody {
 	text-align: left;
 	font-weight: 350;
@@ -80,6 +97,10 @@ body {
 	list-style-type: none;
 	text-align: left;
 	border: 1px;
+}
+.articleVote {
+	margin-top: 10px;
+	padding: 10px;
 }
 
 @font-face {

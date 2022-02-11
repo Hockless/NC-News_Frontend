@@ -20,10 +20,20 @@ const Football = () => {
 	if (loading) return <p>Loading...</p>;
 	return (
 		<main className="articles">
-			<h2>
-				<button onClick={() => setSortby('created_at')}>Published</button>
-				<button onClick={() => setSortby('votes')}>Votes</button>
-				<button onClick={() => setSortby('comment_count')}>Comments</button>
+			<h2 className="buttonBox">
+				{' '}
+				Sort By :&nbsp;
+				<button onClick={() => setSortby('created_at')} className="sortBy">
+					Published
+				</button>
+				<div class="divider" />
+				<button onClick={() => setSortby('votes')} className="sortBy">
+					Votes
+				</button>
+				<div class="divider" />
+				<button onClick={() => setSortby('comment_count')} className="sortBy">
+					Comments
+				</button>
 			</h2>
 			<ul className="codingArticle">
 				{articles.map((article) => {

@@ -5,6 +5,7 @@ import { getComments } from '../utils/api';
 import UpVote from './upvotes';
 import { postComment } from '../utils/api';
 import { deleteComment } from '../utils/api';
+import ArtVote from './article-votes';
 
 const Article = () => {
 	const [loading, setLoading] = useState(true);
@@ -50,7 +51,6 @@ const Article = () => {
 			setCommentBody('');
 		});
 	};
-	console.log(commentBody);
 
 	if (loading) return <p>Loading...</p>;
 	return (
@@ -59,9 +59,9 @@ const Article = () => {
 			<h5 className="articleTopic">Topic: {article.topic}</h5>
 			<p className="articleBody2">{article.body}</p>
 			<p className="commentCount"> Comments: {article.comment_count}</p>
-
-			<p> Article votes: {article.votes}</p>
-
+			<div className="articleVote">
+				<ArtVote article={article} />
+			</div>
 			<div>
 				{' '}
 				<form onSubmit={handleSubmit}>
@@ -73,7 +73,7 @@ const Article = () => {
 						className="textbox"
 						value={commentBody}
 					/>
-					<button>Submit</button>
+					<button className="sortBy">Submit</button>
 				</form>
 			</div>
 			<ul className="codingArticle">
@@ -85,7 +85,10 @@ const Article = () => {
 
 							<p>Created at: {comment.created_at}</p>
 							{comment.author === 'jessjelly' ? (
-								<button onClick={() => removeComment(comment.comment_id)}>
+								<button
+									onClick={() => removeComment(comment.comment_id)}
+									className="cybr-btn"
+								>
 									Delete
 								</button>
 							) : null}

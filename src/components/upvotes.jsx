@@ -14,7 +14,7 @@ const UpVote = ({ comment }) => {
 				UPVOTE_
 			</button>
 			<button className="cybr-btn" onClick={() => giveVote(-1)}>
-				downvote_
+				DOWNVOTE_
 			</button>
 		</div>
 	);
