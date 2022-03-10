@@ -21,7 +21,7 @@ const Home = () => {
 
 				{articles.map((article) => {
 					return (
-						<ul>
+						<ul key="home">
 							<h4 className="articleTitle">
 								<Link
 									key={article.title}

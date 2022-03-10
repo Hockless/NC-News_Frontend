@@ -6,17 +6,12 @@ const Football = () => {
 	const [articles, setArticles] = useState([]);
 	const [sortBy, setSortby] = useState('created_at');
 	const [loading, setLoading] = useState(true);
-	const changeSort = (event) => {
-		setSortby(event.target.value);
-	};
-
 	useEffect(() => {
 		getArticles(sortBy).then((articles) => {
 			setArticles(articles);
 			setLoading(false);
 		});
 	}, [sortBy]);
-
 	if (loading) return <p>Loading...</p>;
 	return (
 		<main className="articles">
@@ -26,11 +21,11 @@ const Football = () => {
 				<button onClick={() => setSortby('created_at')} className="sortBy">
 					Published
 				</button>
-				<div class="divider" />
+				<div className="divider" />
 				<button onClick={() => setSortby('votes')} className="sortBy">
 					Votes
 				</button>
-				<div class="divider" />
+				<div className="divider" />
 				<button onClick={() => setSortby('comment_count')} className="sortBy">
 					Comments
 				</button>
@@ -39,7 +34,7 @@ const Football = () => {
 				{articles.map((article) => {
 					if (article.topic === 'football')
 						return (
-							<ul className="codingArticle">
+							<ul key="footballList" className="codingArticle">
 								<Link to={`/articles/${article.article_id}`}>
 									<h4 className="articleTitle">{article.title}</h4>
 								</Link>

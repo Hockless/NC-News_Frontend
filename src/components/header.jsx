@@ -10,7 +10,7 @@ const Header = () => {
 							NC NEWS
 						</Link>
 					</div>
-					<li>
+					<li key="header">
 						<Link to="/">Home</Link>
 					</li>
 					<li>

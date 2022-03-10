@@ -11,7 +11,7 @@ const Article = () => {
 	const [loading, setLoading] = useState(true);
 	const [article, setArticle] = useState([]);
 	const [comments, setComments] = useState([]);
-	const { article_id, reqBody } = useParams();
+	const { article_id } = useParams();
 	const [commentBody, setCommentBody] = useState('');
 
 	useEffect(() => {

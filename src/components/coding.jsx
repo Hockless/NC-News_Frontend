@@ -1,22 +1,14 @@
 import { getArticles } from '../utils/api';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Coding = () => {
 	const [articles, setArticles] = useState([]);
 	const [loading, setLoading] = useState(true);
-
 	const [sortBy, setSortby] = useState('created_at');
-	const [category, setCategory] = useState('');
-
-	// const changeSort = (event) => {
-	// 	setSortby(event.target.value);
-	// };
-
 	useEffect(() => {
 		getArticles(sortBy).then((articles) => {
 			setArticles(articles);
-
 			setLoading(false);
 		});
 	}, [sortBy]);
@@ -29,11 +21,11 @@ const Coding = () => {
 				<button onClick={() => setSortby('created_at')} className="sortBy">
 					Published
 				</button>
-				<div class="divider" />
+				<div className="divider" />
 				<button onClick={() => setSortby('votes')} className="sortBy">
 					Votes
 				</button>
-				<div class="divider" />
+				<div className="divider" />
 				<button onClick={() => setSortby('comment_count')} className="sortBy">
 					Comments
 				</button>
