@@ -1,6 +1,8 @@
 # NC NEWS
 
-A Northcoders student project.
+## A Northcoders student project by James Hockless
+
+Northcoders News is a social news aggregation, web content rating, and discussion website. It has several functionalities, including the ability to post comments, delete comments, pull up articles, topics and more. For this project, I built both the backend and frontend using most of the skills I have previously listed. Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted using the API.
 
 ## Available Scripts
 
