@@ -1,4 +1,4 @@
-#NC NEWS Frontend -- A Northcoders Student Project
+# NC NEWS Frontend -- A Northcoders Student Project
 
 You can visit a live version of NC NEWS here: https://nc-news-hockless.netlify.app/.
 
