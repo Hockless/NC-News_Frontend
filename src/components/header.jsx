@@ -10,13 +10,13 @@ const Header = () => {
 							NC NEWS
 						</Link>
 					</div>
-					<li key="header">
+					<ul key="header">
 						<Link to="/">Home</Link>
-					</li>
-					<li>
+					</ul>
+					<ul>
 						<Link to="/topics">Topics</Link>
-					</li>
-					<li>Logged in as: jessjelly</li>
+					</ul>
+					<ul>Logged in as: jessjelly</ul>
 				</nav>
 			</figure>
 		</header>

@@ -12,16 +12,16 @@ const Nav = () => {
 	}, []);
 
 	return (
-		<nav className="">
+		<nav className="topicsNav">
 			{topics.map((topic) => {
 				return (
 					<ul>
 						<figure>
-							<li className="">
+							<ui className="">
 								<Link key={topic.slug} to={`topics/${topic.slug}`}>
 									{topic.slug}
 								</Link>
-							</li>
+							</ui>
 						</figure>
 					</ul>
 				);
